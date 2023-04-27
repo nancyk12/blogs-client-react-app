@@ -6,7 +6,7 @@ function BlogForm(props) {
 	const [titleInput, setTitleInput] = useState("");
 	const [textInput, setTextInput] = useState("");
 	const [authorInput, setAuthorInput] = useState("");
-
+	const [amountInput, setAmountInput] = useState("");
 	const navigate = useNavigate();
 
 	console.log(props);
