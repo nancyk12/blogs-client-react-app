@@ -15,6 +15,7 @@ function BlogForm(props) {
 			title: titleInput,
 			text: textInput,
 			author: authorInput,
+			amount: amountInput,
 		};
 		// const newArray = [...props.blogsProps, newBlog];
 		e.preventDefault();
@@ -25,6 +26,7 @@ function BlogForm(props) {
 		setTitleInput("");
 		setTextInput("");
 		setAuthorInput("");
+		setAmountInput("");
 		navigate("/");
 		//props.setBlogsProps([...props.blogsProps, newBlog])
 		//function getInfo(callback){}
@@ -68,10 +70,10 @@ function BlogForm(props) {
 				<label>Amount</label>
 				<input
 					type="text"
-					value={authorInput}
+					value={amountInput}
 					name="amount"
 					onChange={(e) => {
-						setAuthorInput(e.target.value);
+						setAmountInput(e.target.value);
 					}}
 				/>
 				<button type="submit">Submit</button>
