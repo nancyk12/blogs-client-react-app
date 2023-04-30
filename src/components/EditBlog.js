@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function BlogForm(props) {
+function EditBlog(props) {
 	const [titleInput, setTitleInput] = useState("");
 	const [textInput, setTextInput] = useState("");
 	const [authorInput, setAuthorInput] = useState("");
@@ -92,4 +92,4 @@ function BlogForm(props) {
 	);
 }
 
-export default BlogForm;
+export default EditBlog;

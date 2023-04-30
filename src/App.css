@@ -1,38 +1,263 @@
+* {
+  box-sizing: border-box;
+}
+
+colors{
+--e-global-color-primary: #685454;
+--e-global-color-secondary: #EA8A8A;
+--e-global-color-text: #685454;
+}
+
 .App {
-  text-align: center;
+  padding: 4rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #FFFFFF;
+  /*background-color: #FFF7ED;*/
+  font-family: "Inter", sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+body::-webkit-scrollbar {
+display: none;
+}
+
+body {
+  font-family: 'Poppins',sans-serif;
+  width: 100%
+}
+.small {
+  width: 100px;
+  height: 100px;
+  margin: 10px auto 0 auto;
   }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #FFF7ED;
+  font-family: "Inter", sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
+body::-webkit-scrollbar {
+  display: none;
+} 
+
+.site-wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+
+header {
+  background-color:#685454;
+  height: 110px;
+  display: flex;
   align-items: center;
+  padding-block: 10px;
+}
+
+ 
+header .site-logo {
+  color: black;
+  margin-right: auto;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 25px;
+}
+
+header a {
+  text-decoration: none;
+  /* color: #4D4D4D; */
+  color: #FFFFFF;
+  font-weight: 600;
+  padding: 5px 20px;
+}
+  /* color: #161616; */
+header a:hover {
+  color: #C4B29C;
+  text-decoration: underline;
+} 
+
+header a:active {
+  color: #EA8A8A;
+  text-decoration: underline;
+} 
+
+
+header .login-icon {
+  height: 18px;
+  width: 18px;
+}
+
+header .login-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+}
+
+main {
+  margin-bottom: 84px;
+}
+
+footer {
+  background-color:#685454;
+  color: #FFFFFF;
+  height: 74px;
+  display: flex;
+  flex-shrink: 0;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  margin-top: auto;
+  font-weight: 500;
+}
+
+.link-button {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  padding: .75rem 1.375rem;
+  color: initial;
+  font-weight: 700;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform .1s ease-in-out;
+}
+
+.link-button:hover {
+  transform: translate(1px, 1px);
+}
+
+/* Blog */
+.blog-link-wrapper {
+  color: unset;
+  text-decoration: unset;
+}
+
+.blog-list {
+  margin-top: 54px;
+  padding-inline: 26px;
+}
+
+.blog-title {
+  padding-inline: 26px;
+}
+
+.blog-single {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  margin-bottom: 15px;
+  padding-block: 18px;
+  padding-left: 24px;
+}
+
+.blog-single > img {
+  height: 300px;
+  border-radius: 5px;
+  margin-right: 17px;
+}
+
+.blog-info h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-block: 10px;
+}
+
+.blog-info p {
+  margin-block: 10px;
+}
+
+
+/* Single Blog Page */
+
+
+.blog-single-layout-container {
+  width: 80vw;
+  background-color: white;
+  padding: 24px;
+  margin: 30px 26px;
+}
+
+.blog-single {
+  width: 80vw;
+  display: flex;
+  align-items: center;
+}
+
+.blog-single > img {
+  height: 160px;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+.blog-single-info-text > h3 {
+  margin-top: 24px;
+  margin-bottom: 5px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.blog-single-info-text > h4 {
+  font-size: 20px;
+  margin-block: 0;
+}
+
+/* Blog Form */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline: 27px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;    
+}
+
+.login-form > input {
+  border: 1px solid rgba(209, 213, 219);
+  height: 40px;
+  text-indent: 10px;
+  font-family: "Inter", sans-serif;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  font-weight: 400;
+}
+
+.login-form > input:focus {
+  outline: none;
+}
+
+.login-form > input:first-of-type {
+  border-radius: 6px 6px 0px 0px;
+}
+
+.login-form > input:last-of-type {
+  border-radius: 0px 0px 6px 6px;
+  border-top: none;
+}
+
+.login-form > button {
+  background-color: #EA8A8A;;
+  border: none;
+  border-radius: 6px;
+  height: 55px;
+  margin-top: 22px;
   color: white;
+  font-family: "Inter", sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
+.red {
+  color: #cc0000;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
