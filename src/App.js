@@ -8,7 +8,7 @@ import EditBlog from "./components/EditBlog";
 import { useState, useEffect } from "react";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
-//import PrivatePage from "./pages/PrivatePage"
+import PrivatePage from "./pages/PrivatePage"
 import { Route, Routes } from "react-router-dom";
 
 
@@ -36,8 +36,11 @@ function App() {
 			<NavBar />
 			{/* <BlogForm setBlogsProps={setBlogs} blogsProps={blogs} /> */}
 			<Routes>
-				<Route path="/" element={
-					<Blogs 
+			<Route path="/" element={<PrivatePage />}>		
+				<Route 
+				   index
+				   element={
+					 <Blogs 
 						blogsProps={blogs}
 						setShouldRefreshProps={setShouldRefresh}
 					 />
@@ -61,6 +64,7 @@ function App() {
 				    	/>
 					}
 				/>
+				</Route>
 				<Route path="/register" element={<Registration />} />
 				<Route path="/login" element={<Login />} />
 			</Routes>
