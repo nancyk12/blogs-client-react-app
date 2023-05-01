@@ -2,11 +2,11 @@
   box-sizing: border-box;
 }
 
-colors{
+/* colors{
 --e-global-color-primary: #685454;
 --e-global-color-secondary: #EA8A8A;
 --e-global-color-text: #685454;
-}
+} */
 
 .App {
   padding: 4rem;
@@ -20,9 +20,9 @@ html, body {
   font-family: "Inter", sans-serif;
 }
 
-body::-webkit-scrollbar {
+/* body::-webkit-scrollbar {
 display: none;
-}
+} */
 
 body {
   font-family: 'Poppins',sans-serif;
@@ -157,9 +157,11 @@ footer {
   margin-bottom: 15px;
   padding-block: 18px;
   padding-left: 24px;
+  border-radius: 10px;
+
 }
 
-.blog-single > img {
+.blog-single-img {
   height: 300px;
   border-radius: 5px;
   margin-right: 17px;

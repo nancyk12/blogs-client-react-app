@@ -4,8 +4,13 @@ import axios from "axios"; // axios is a 3rd party library that helps us with ap
 import NavBar from "./components/NavBar";
 import Blogs from "./components/Blogs";
 import BlogForm from "./components/BlogForm";
+import EditBlog from "./components/EditBlog";
 import { useState, useEffect } from "react";
+//import Login from "./pages/Login";
+import Registration from "./pages/Registration";
+//import PrivatePage from "./pages/PrivatePage"
 import { Route, Routes } from "react-router-dom";
+
 
 function App() {
 	const [blogs, setBlogs] = useState([]);
@@ -47,6 +52,17 @@ function App() {
 					/>
 					}
 				/>
+				<Route 
+					path="/edit-blog/:id" 
+					element={
+					     <EditBlog	
+							blogsProps={blogs}
+							setShouldRefreshProps={setShouldRefresh}
+				    	/>
+					}
+				/>
+				<Route path="/register" element={<Registration />} />
+				{/* <Route path="/login" element={<Login />} /> */}
 			</Routes>
 		</div>
 	);

@@ -1,95 +1,85 @@
-import React from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function EditBlog(props) {
+export default function EditBlog(props) {
 	const [titleInput, setTitleInput] = useState("");
 	const [textInput, setTextInput] = useState("");
 	const [authorInput, setAuthorInput] = useState("");
 	const [categoriesInput, setCategoriesInput] = useState("");
+	const { id } = useParams();
+	const navigate = useNavigate();
 	const url = "http://localhost:5001";
 
-	const navigate = useNavigate();
+	useEffect(() => {
+		const foundBlog = props.blogsProps.find((blog) => {
+			return blog.id === id;
+		});
+		setTitleInput(foundBlog.title);
+		setTextInput(foundBlog.text);
+		setAuthorInput(foundBlog.author);
+		setCategoriesInput(foundBlog.category);
+	}, [id, props.blogsProps]);
 
-
-	const handleOnSubmit = async (e) => {
+	const handleOnSubmit = async () => {
 		props.setShouldRefreshProps(true);
-		const newBlog = {
+		const updatedData = {
 			title: titleInput,
 			text: textInput,
 			author: authorInput,
 			category: categoriesInput,
 		};
-		// const newArray = [...props.blogsProps, newBlog];
-		e.preventDefault();
-		// props.setBlogsProps((prevState) => [
-		// 	...prevState,
-		// 	{ ...newBlog, id: prevState.length + 1 },
-		// ]);
-		const response = await axios.post(`${url}/blogs/create-blog`, newBlog)
+		const response = await axios.put(
+			`${url}/blogs/update-by-id/${id}`,
+			updatedData
+		);
 		props.setShouldRefreshProps(false);
-
-		setTitleInput("");
-		setTextInput("");
-		setAuthorInput("");
-		setCategoriesInput("");
 		navigate("/");
-		//props.setBlogsProps([...props.blogsProps, newBlog])
-		//function getInfo(callback){}
-		//getInfo(handleOnSubmit)
 	};
-
 	return (
-	  <>
 		<div>
-			<form onSubmit={handleOnSubmit}>
-			    <label>Title:</label>
-				<input
-					type="text"
-					value={titleInput}
-					name="title"
-					onChange={(e) => {
-						setTitleInput(e.target.value);
-					}}
-				/>
-				<br />
-				<label>Text:</label>
-				<textarea
-					type="text"
-					value={textInput}
-					name="text"
-					onChange={(e) => {
-						setTextInput(e.target.value);
-					}}
-				/>
-				<br />
-				<label>Author:</label>
-				<input
-					type="text"
-					value={authorInput}
-					name="author"
-					onChange={(e) => {
-						setAuthorInput(e.target.value);
-					}}
-				/>
-				<br />
-				<label>Category</label>
-				<input
-					type="text"
-					value={categoriesInput}
-					name="amount"
-					onChange={(e) => {
-						setCategoriesInput(e.target.value);
-					}}
-				/>
-				<button type="submit">Submit</button>
-			</form>
-
-			
+			<h2>Edit Blog</h2>
+			<label>Title:</label>
+			<input
+				type="text"
+				value={titleInput}
+				name="title"
+				onChange={(e) => {
+					setTitleInput(e.target.value);
+				}}
+			/>
+			<br />
+			<label>Text:</label>
+			<textarea
+				type="text"
+				value={textInput}
+				name="text"
+				onChange={(e) => {
+					setTextInput(e.target.value);
+				}}
+			/>
+			<br />
+			<label>Author:</label>
+			<input
+				type="text"
+				value={authorInput}
+				name="author"
+				onChange={(e) => {
+					setAuthorInput(e.target.value);
+				}}
+			/>
+			<br />
+			<label>Categories:</label>
+			<input
+				type="text"
+				value={categoriesInput}
+				name="categories"
+				onChange={(e) => {
+					setCategoriesInput(e.target.value);
+				}}
+			/>
+			<br />
+			<button onClick={handleOnSubmit}>Submit</button>
 		</div>
-	  </>	
 	);
 }
-
-export default EditBlog;

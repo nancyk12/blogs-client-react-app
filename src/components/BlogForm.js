@@ -1,9 +1,9 @@
-import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function BlogForm(props) {
+	const [imageInput, setImageInput] = useState("");
 	const [titleInput, setTitleInput] = useState("");
 	const [textInput, setTextInput] = useState("");
 	const [authorInput, setAuthorInput] = useState("");
@@ -12,10 +12,10 @@ function BlogForm(props) {
 
 	const navigate = useNavigate();
 
-
 	const handleOnSubmit = async (e) => {
 		props.setShouldRefreshProps(true);
 		const newBlog = {
+			image: imageInput,
 			title: titleInput,
 			text: textInput,
 			author: authorInput,
@@ -27,13 +27,13 @@ function BlogForm(props) {
 		// 	...prevState,
 		// 	{ ...newBlog, id: prevState.length + 1 },
 		// ]);
-		const response = await axios.post(`${url}/blogs/create-blog`, newBlog)
+		const response = await axios.post(`${url}/blogs/create-blog`, newBlog);
 		props.setShouldRefreshProps(false);
 
+		setImageInput("");
 		setTitleInput("");
 		setTextInput("");
 		setAuthorInput("");
-		setCategoriesInput("");
 		navigate("/");
 		//props.setBlogsProps([...props.blogsProps, newBlog])
 		//function getInfo(callback){}
@@ -41,10 +41,20 @@ function BlogForm(props) {
 	};
 
 	return (
-	  <>
 		<div>
 			<form onSubmit={handleOnSubmit}>
-			    <label>Title:</label>
+				<label>Image:</label>
+					<input
+						type="url"
+						value={imageInput}
+						name="image"
+						onChange={(e) => {
+							setImageInput(e.target.value);
+						}}
+					/>
+					<br />
+
+				<label>Title:</label>
 				<input
 					type="text"
 					value={titleInput}
@@ -74,21 +84,19 @@ function BlogForm(props) {
 					}}
 				/>
 				<br />
-				<label>Category</label>
+				<label>Categories:</label>
 				<input
 					type="text"
 					value={categoriesInput}
-					name="amount"
+					name="categories"
 					onChange={(e) => {
 						setCategoriesInput(e.target.value);
 					}}
 				/>
+				<br />
 				<button type="submit">Submit</button>
 			</form>
-
-			
 		</div>
-	  </>	
 	);
 }
 
