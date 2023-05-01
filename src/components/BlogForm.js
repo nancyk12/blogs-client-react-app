@@ -41,8 +41,10 @@ function BlogForm(props) {
 	};
 
 	return (
-		<div>
-			<form onSubmit={handleOnSubmit}>
+		<div className="login-container">
+			<h1>Share your pet adoption success story.</h1>
+			<br/>
+			<form className="login-form" onSubmit={handleOnSubmit}>
 				<label>Image:</label>
 					<input
 						type="url"

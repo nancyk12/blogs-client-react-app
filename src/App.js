@@ -6,7 +6,7 @@ import Blogs from "./components/Blogs";
 import BlogForm from "./components/BlogForm";
 import EditBlog from "./components/EditBlog";
 import { useState, useEffect } from "react";
-//import Login from "./pages/Login";
+import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 //import PrivatePage from "./pages/PrivatePage"
 import { Route, Routes } from "react-router-dom";
@@ -62,7 +62,7 @@ function App() {
 					}
 				/>
 				<Route path="/register" element={<Registration />} />
-				{/* <Route path="/login" element={<Login />} /> */}
+				<Route path="/login" element={<Login />} />
 			</Routes>
 		</div>
 	);

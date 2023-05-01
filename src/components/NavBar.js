@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 function NavBar() {
 	return (
+	  <header>
 		<nav>
 			<Link to="/">Home</Link>
 			{"    "}
@@ -10,6 +11,7 @@ function NavBar() {
 			{"    "}
 			<Link to="/login">Login</Link>
 		</nav>
+	 </header>
 	);
 }
 //es6 syntax
