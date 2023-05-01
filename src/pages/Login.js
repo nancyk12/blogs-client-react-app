@@ -22,26 +22,27 @@ export default function Login() {
 		}
 	};
 	return (
-        <div>
+      <div>
         <div className="login-container">
-            <h1>Login to your account</h1>
-            <form className="login-form">
-                <input
-                    name="email"
-                    type="email"
-                    placeholder="Email address"
-                    value={email} 
-                    onChange={(e)=> setEmail(e.target.value)} 
-                />
-                <input
-                    name="password"
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e)=> setPassword(e.target.value)} 
-                />
-                <button onClick={handleSubmit} >Login</button>
-            </form>
+          <div className="login-form"> 
+			<h1>Login Page</h1>
+			<label htmlFor="email">Email:</label>
+			<input
+				type="text"
+				name="email"
+				value={email}
+				onChange={(e) => setEmail(e.target.value)}
+			/>
+			<br />
+			<label htmlFor="password">Password:</label>
+			<input
+				type="text"
+				name="password"
+				value={password}
+				onChange={(e) => setPassword(e.target.value)}
+			/>
+			<button onClick={handleSubmit}>Login</button>
+           </div>  
         </div>
       </div>
     );

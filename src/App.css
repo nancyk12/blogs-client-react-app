@@ -239,6 +239,7 @@ footer {
 
 .login-form > input {
   border: 1px solid rgba(209, 213, 219);
+  border-radius: 6px 6px 6px 6px;
   height: 40px;
   text-indent: 10px;
   font-family: "Inter", sans-serif;
@@ -252,14 +253,14 @@ footer {
   outline: none;
 }
 
-.login-form > input:first-of-type {
+/* .login-form > input:first-of-type {
   border-radius: 6px 6px 0px 0px;
 }
 
 .login-form > input:last-of-type {
   border-radius: 0px 0px 6px 6px;
   border-top: none;
-}
+} */
 
 .login-form > button {
   background-color: #EA8A8A;;
