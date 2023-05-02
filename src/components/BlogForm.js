@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import PhotoUpload from "./PhotoUpload";
 
 function BlogForm(props) {
 	const [imageInput, setImageInput] = useState("");
@@ -46,14 +47,7 @@ function BlogForm(props) {
 			<br/>
 			<form className="login-form" onSubmit={handleOnSubmit}>
 				<label>Image:</label>
-					<input
-						type="url"
-						value={imageInput}
-						name="image"
-						onChange={(e) => {
-							setImageInput(e.target.value);
-						}}
-					/>
+				<PhotoUpload/>
 					<br />
 
 				<label>Title:</label>

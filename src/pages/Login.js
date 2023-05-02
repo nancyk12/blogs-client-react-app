@@ -1,8 +1,9 @@
+import "../App.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext";
 
-export default function Login() {
+function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const { login } = useAuth();
@@ -16,6 +17,7 @@ export default function Login() {
 		};
 		const loginResult = await login(userData);
 		if (loginResult) {
+            
 			navigate("/");
 		} else {
 			navigate("/register");
@@ -47,3 +49,5 @@ export default function Login() {
       </div>
     );
   }
+
+  export default Login;

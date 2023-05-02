@@ -3,6 +3,7 @@ import { useState } from "react";
 import { registerUser } from "../Auth/authUtils";
 import { useNavigate } from "react-router-dom";
 
+
 export default function Registration() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -16,7 +17,7 @@ export default function Registration() {
 			password: password,
 			role: role,
 		};
-		const registerResult = await registerUser(newUser);
+		const registerResult = await registerUser(newUser);  
 		if (registerResult) {
 			navigate("/");
 		}
@@ -42,9 +43,9 @@ export default function Registration() {
 				value={password}
 				onChange={(e) => setPassword(e.target.value)}
 			/>
-			<button onClick={handleSubmit}>Login</button>
+			<button onClick={handleSubmit}>Register</button>
            </div>  
         </div>
       </div>
-    )
+    );
 }

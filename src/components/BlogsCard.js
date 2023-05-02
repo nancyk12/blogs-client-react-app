@@ -15,7 +15,7 @@ function BlogsCard(props) {
 	}
 
 
-	console.log("blogs card", props);
+	
 	return (
 	  <section>	
 		<div div className="blog-link-wrapper">
@@ -34,7 +34,9 @@ function BlogsCard(props) {
 				<p>author: {props.blog.author}</p>
 				<p>Categories: {props.blog.category}</p>
 				<button onClick={() => handleDelete(props.blog.id)}>Delete Blog</button>
-				<button onClick={() => navigate(`/edit-blog/${props.blog.id}`)} >Edit</button>
+				<button onClick={() => navigate(`/edit-blog/${props.blog.id}`)}>
+				Edit
+			</button>
 			</div>	
 		  </div>		
 		</div>

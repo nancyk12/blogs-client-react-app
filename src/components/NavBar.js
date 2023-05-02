@@ -1,17 +1,29 @@
 import { Link } from "react-router-dom";
+import  { useAuth } from "../Auth/AuthContext";
+import { removeUserToken } from "../Auth/authLocalStorage";
+import { useNavigate } from "react-router-dom";
+
 function NavBar() {
+	const { isVerified, logout } = useAuth();
+	const navigate = useNavigate();
+
+	const handleLogout = async () => {
+		const logoutResult = await logout();
+		if (logoutResult) navigate("/login");
+	};
+
 	return (
 	  <header>
 		<nav>
 			<Link to="/">Home</Link>
 			{"    "}
-			<Link to="/blog-form">Create New Blog</Link>
-			{"    "}
-			<Link to="/register">Register</Link>
-			{"    "}
-			<Link to="/login">Login</Link>
+			{isVerified && <Link to="/home/blog-form">Create New Blog</Link>} {"    "}
+			{isVerified && <button onClick={handleLogout}>Logout</button>}{" "}
+			{!isVerified && <Link to="/register">Register</Link>}
+			{"  "}
+			{!isVerified && <Link to="/login">Login</Link>}
 		</nav>
-	 </header>
+	  </header>
 	);
 }
 //es6 syntax

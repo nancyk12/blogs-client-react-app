@@ -262,7 +262,7 @@ footer {
   border-top: none;
 } */
 
-.login-form > button {
+/* .login-form > button {
   background-color: #EA8A8A;;
   border: none;
   border-radius: 6px;
@@ -270,7 +270,7 @@ footer {
   margin-top: 22px;
   color: white;
   font-family: "Inter", sans-serif;
-}
+} */
 
 .red {
   color: #cc0000;
