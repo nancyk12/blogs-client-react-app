@@ -22,7 +22,7 @@ function BlogsCard(props) {
 		  <div className="blog-single"> 
 		  <div className="blog-single-img">
                          {props.blog.image !== null ?
-                         <img
+                         <img 
                         style={{ width: "300px", height: "300px" }}
                         src={props.blog.image} alt="pet"/> 
                         : 

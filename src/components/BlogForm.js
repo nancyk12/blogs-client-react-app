@@ -47,7 +47,11 @@ function BlogForm(props) {
 			<br/>
 			<form className="login-form" onSubmit={handleOnSubmit}>
 				<label>Image:</label>
-				<PhotoUpload/>
+				<PhotoUpload
+				onChange={(e) => {
+					setImageInput(e.target.value);
+				}}
+				/>
 					<br />
 
 				<label>Title:</label>

@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import PhotoUpload from "./PhotoUpload";
 
 export default function EditBlog(props) {
+	const [imageInput, setImageInput] = useState("");
 	const [titleInput, setTitleInput] = useState("");
 	const [textInput, setTextInput] = useState("");
 	const [authorInput, setAuthorInput] = useState("");
@@ -15,6 +17,7 @@ export default function EditBlog(props) {
 		const foundBlog = props.blogsProps.find((blog) => {
 			return blog.id === id;
 		});
+		setImageInput(foundBlog.image);
 		setTitleInput(foundBlog.title);
 		setTextInput(foundBlog.text);
 		setAuthorInput(foundBlog.author);
@@ -24,6 +27,7 @@ export default function EditBlog(props) {
 	const handleOnSubmit = async () => {
 		props.setShouldRefreshProps(true);
 		const updatedData = {
+			image: imageInput,
 			title: titleInput,
 			text: textInput,
 			author: authorInput,
@@ -37,49 +41,59 @@ export default function EditBlog(props) {
 		navigate("/");
 	};
 	return (
-		<div>
+		<div className="login-container">
 			<h2>Edit Blog</h2>
-			<label>Title:</label>
-			<input
-				type="text"
-				value={titleInput}
-				name="title"
+			<br/>
+			<form className="login-form" onSubmit={handleOnSubmit}>
+				<label>Image:</label>
+				<PhotoUpload
 				onChange={(e) => {
-					setTitleInput(e.target.value);
+					setImageInput(e.target.value);
 				}}
-			/>
-			<br />
-			<label>Text:</label>
-			<textarea
-				type="text"
-				value={textInput}
-				name="text"
-				onChange={(e) => {
-					setTextInput(e.target.value);
-				}}
-			/>
-			<br />
-			<label>Author:</label>
-			<input
-				type="text"
-				value={authorInput}
-				name="author"
-				onChange={(e) => {
-					setAuthorInput(e.target.value);
-				}}
-			/>
-			<br />
-			<label>Categories:</label>
-			<input
-				type="text"
-				value={categoriesInput}
-				name="categories"
-				onChange={(e) => {
-					setCategoriesInput(e.target.value);
-				}}
-			/>
-			<br />
-			<button onClick={handleOnSubmit}>Submit</button>
+				/>
+					<br />
+				<label>Title:</label>
+				<input
+					type="text"
+					value={titleInput}
+					name="title"
+					onChange={(e) => {
+						setTitleInput(e.target.value);
+					}}
+				/>
+				<br />
+				<label>Text:</label>
+				<textarea
+					type="text"
+					value={textInput}
+					name="text"
+					onChange={(e) => {
+						setTextInput(e.target.value);
+					}}
+				/>
+				<br />
+				<label>Author:</label>
+				<input
+					type="text"
+					value={authorInput}
+					name="author"
+					onChange={(e) => {
+						setAuthorInput(e.target.value);
+					}}
+				/>
+				<br />
+				<label>Categories:</label>
+				<input
+					type="text"
+					value={categoriesInput}
+					name="categories"
+					onChange={(e) => {
+						setCategoriesInput(e.target.value);
+					}}
+				/>
+				<br />
+				<button onClick={handleOnSubmit}>Submit</button>
+			</form>	
 		</div>
 	);
 }
